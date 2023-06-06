@@ -13,7 +13,9 @@ import {
   ArrowLeftIcon,
   ChevronLeftIcon,
   MinusCircleIcon,
+  MinusIcon,
   PlusCircleIcon,
+  PlusIcon,
   XCircleIcon,
 } from "react-native-heroicons/outline";
 import { urlFor } from "../sanity";
@@ -73,18 +75,22 @@ const BasketScreen = () => {
                 </View>
               </View>
 
-              <View className="flex-row space-x-2 absolute left-3/4 top-2/4">
-                <TouchableOpacity
-                  onPress={() => dispatch(removeFromBasket({ id: key }))}
-                >
-                  <MinusCircleIcon color="#FFC901" size={30} />
-                </TouchableOpacity>
+              <View className="flex-row space-x-2 absolute left-2/3 top-2/3">
+                <View className="bg-gray-100">
+                  <TouchableOpacity
+                    onPress={() => dispatch(removeFromBasket({ id: key }))}
+                  >
+                    <MinusIcon color="#FFC901" size={25} />
+                  </TouchableOpacity>
+                </View>
                 <Text className="text-lg">{items.length}</Text>
-                <TouchableOpacity
-                  onPress={() => dispatch(addToBasket({ id: key }))}
-                >
-                  <PlusCircleIcon color="#FFC901" size={30} />
-                </TouchableOpacity>
+                <View className="bg-gray-100">
+                  <TouchableOpacity
+                    onPress={() => dispatch(addToBasket({ id: key }))}
+                  >
+                    <PlusIcon color="#FFC901" size={25} />
+                  </TouchableOpacity>
+                </View>
               </View>
 
               <TouchableOpacity
@@ -102,7 +108,7 @@ const BasketScreen = () => {
           <Text>Total</Text>
           <Text>Rs {total}</Text>
         </View>
-        <TouchableOpacity className="rounded-lg bg-[#FFC901] p-4">
+        <TouchableOpacity onPress={() => navigation.navigate('PreparingScreen')} className="rounded-lg bg-[#FFC901] p-4">
           <Text className="text-center text-white text-lg font-bold">
             Place Order
           </Text>
