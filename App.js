@@ -1,4 +1,4 @@
-// import "react-native-url-polyfill/auto";
+import "react-native-url-polyfill/auto";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import { TailwindProvider } from "tailwindcss-react-native";
@@ -11,6 +11,8 @@ import { store } from "./store";
 import BasketScreen from "./screens/BasketScreen";
 import PreparingScreen from "./screens/PreparingScreen";
 import DeliveryScreen from "./screens/DeliveryScreen";
+import AllRestaurantScreen from "./screens/AllRestaurantScreen";
+import CategoryScreen from "./screens/CategoryScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -31,6 +33,16 @@ export default function App() {
             <Stack.Screen
               name="Delivery"
               component={DeliveryScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="AllRestaurant"
+              component={AllRestaurantScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Category"
+              component={CategoryScreen}
               options={{ headerShown: false }}
             />
           </Stack.Navigator>

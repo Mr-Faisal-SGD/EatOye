@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { XMarkIcon } from "react-native-heroicons/solid";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as Progress from "react-native-progress";
-// import MapView, { Marker } from "react-native-maps";
+import MapView, { Marker } from "react-native-maps";
 
 const DeliveryScreen = () => {
   const navigation = useNavigation();
@@ -41,7 +41,7 @@ const DeliveryScreen = () => {
         </View>
       </SafeAreaView>
 
-      {/* <MapView
+      <MapView
         initialRegion={{
           latitude: restaurant.lat,
           longitude: restaurant.long,
@@ -61,7 +61,7 @@ const DeliveryScreen = () => {
           identifier="origin"
           pincolor="#FFC901"
         />
-      </MapView> */}
+      </MapView>
     </View>
   );
 };
