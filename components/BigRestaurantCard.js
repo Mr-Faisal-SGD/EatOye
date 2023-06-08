@@ -19,8 +19,6 @@ const BigRestaurantCard = ({
 }) => {
   const navigation = useNavigation();
 
-  console.log(id, title, genre);
-
   return (
     <TouchableOpacity
       onPress={() => {
