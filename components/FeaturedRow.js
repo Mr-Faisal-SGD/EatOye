@@ -1,10 +1,19 @@
-import { View, Text, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  Touchable,
+  TouchableOpacity,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import { ChevronRightIcon } from "react-native-heroicons/outline";
 import RestaurantCard from "./RestaurantCard";
 import sanityClient from "../sanity";
+import { ArrowRightIcon } from "react-native-heroicons/solid";
+import { useNavigation } from "@react-navigation/native";
 
 const FeaturedRow = ({ id, title, description }) => {
+  const navigation = useNavigation();
   const [restaurants, setRestaurants] = useState([]);
 
   useEffect(() => {
@@ -28,17 +37,18 @@ const FeaturedRow = ({ id, title, description }) => {
         setRestaurants(data?.restaurants);
       });
   }, []);
-  
 
   return (
     <View>
       <View className="flex-row mt-4 items-center justify-between px-4">
         <Text className="text-2xl">{title}</Text>
-        <Text className="text-lg">
-          {" "}
-          View All
-          <ChevronRightIcon size={15} />
-        </Text>
+        <TouchableOpacity onPress={() => navigation.navigate("AllRestaurant")}>
+          <Text className="text-lg">
+            {" "}
+            View All
+            <ArrowRightIcon size={15} color="black" />
+          </Text>
+        </TouchableOpacity>
       </View>
       <Text className="text-xs text-gray-500 px-4">{description}</Text>
 
@@ -48,7 +58,6 @@ const FeaturedRow = ({ id, title, description }) => {
         showsHorizontalScrollIndicator={false}
         className="pt-4"
       >
-
         {/* Restaurant Cards */}
 
         {restaurants?.map((restaurant) => (
@@ -66,7 +75,6 @@ const FeaturedRow = ({ id, title, description }) => {
             lat={restaurant.lat}
           />
         ))}
-        
       </ScrollView>
     </View>
   );

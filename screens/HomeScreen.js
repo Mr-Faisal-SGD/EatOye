@@ -1,4 +1,4 @@
-import { View, Text, Image, TextInput, ScrollView } from "react-native";
+import { View, Text, Image, TextInput, ScrollView, Alert } from "react-native";
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -14,6 +14,23 @@ import sanityClient from "../sanity";
 const HomeScreen = () => {
   const navigation = useNavigation();
   const [featuredCategories, setFeaturedCategories] = useState([]);
+
+  useEffect(
+    () =>
+      navigation.addListener("beforeRemove", (e) => {
+        e.preventDefault();
+
+        Alert.alert("Logout?", "Are you Sure!", [
+          { text: "Cancel", style: "cancel", onPress: () => {} },
+          {
+            text: "Yes",
+            style: "destructive",
+            onPress: () => navigation.dispatch(e.data.action),
+          },
+        ]);
+      }),
+    [navigation]
+  );
 
   useLayoutEffect(() => {
     navigation.setOptions({

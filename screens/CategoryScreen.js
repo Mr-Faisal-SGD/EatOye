@@ -30,8 +30,6 @@ const CategoryScreen = () => {
       });
   }, []);
 
-  console.log(restaurants);
-
   return (
     <View className="pb-28">
       <View className="flex-row p-4 items-end bg-[#FFC901] h-28 space-x-2">

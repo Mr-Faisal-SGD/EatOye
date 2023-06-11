@@ -22,7 +22,6 @@ import { urlFor } from "../sanity";
 
 const BasketScreen = () => {
   const navigation = useNavigation();
-  const restaurant = useSelector(selectRestaurant);
   const items = useSelector(selectBasketItems);
   const [groupedItemsInBasket, setGroupedItemsInBasket] = useState([]);
   const dispatch = useDispatch();
